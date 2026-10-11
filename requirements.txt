@@ -1,0 +1,78 @@
+# Accounts Payable & Duplicate Payment Detection
+
+A major process-mining project for analyzing accounts payable workflows, detecting duplicate payments, and identifying workflow deviations using synthetic invoice event logs.
+
+## Project links
+
+1. Project Program + Execution + Result: https://github.com/Rithish-255/accounts-payable-fraud-detection
+2. Academic Implementation Download: https://github.com/Rithish-255/accounts-payable-fraud-detection/blob/main/docs/ACADEMIC_IMPLEMENTATION.md
+
+## Objective
+
+This project simulates an enterprise invoice-to-pay process and applies process-mining concepts to detect:
+
+- duplicate payments
+- rogue or unauthorized payments
+- skipped approvals
+- looping / repeated invoice activities
+- abnormal approval-to-payment delays
+
+## Core Concepts Used
+
+- Case conformance checks
+- PU_COUNT
+- Activity lag analysis
+- Process loops and rework detection
+- Fraud-risk detection in AP
+
+## Real-World Context
+
+This mirrors enterprise accounts payable problems often found in large organizations, where duplicate invoice flows and approval bypass lead to significant financial losses.
+
+## Project Structure
+
+- `src/ap_process_mining.py` — core logic and metrics
+- `src/main.py` — execution entry point
+- `outputs/duplicate_payment_summary.json` — JSON results
+- `outputs/ap_process_report.md` — summary report
+- `docs/ACADEMIC_IMPLEMENTATION.md` — academic write-up
+- `requirements.txt` — dependencies
+
+## Run Instructions
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python src/main.py
+```
+
+## Sample Output
+
+```text
+[AP PROCESS MINING] Loading synthetic accounts payable event log...
+[AP PROCESS MINING] Total invoices analyzed: 1200
+[AP PROCESS MINING] Duplicate payment candidates: 43
+[AP PROCESS MINING] Rogue / unauthorized payments: 12
+[AP PROCESS MINING] Invoices with skipped approval: 18
+[AP PROCESS MINING] Looping invoice cases: 28
+[AP PROCESS MINING] Average activity lag (hours): 15.8
+[AP PROCESS MINING] Highest-risk vendor cluster: VENDOR_08
+[AP PROCESS MINING] Files generated:
+  - data/ap_invoice_eventlog.csv
+  - outputs/duplicate_payment_summary.json
+  - outputs/ap_process_report.md
+```
+
+## Result Summary
+
+- Duplicate payment candidates: 43
+- Rogue payments: 12
+- Skipped approvals: 18
+- Looping invoice cases: 28
+- Avg lag: 15.8 hours
+- Highest risk vendor: VENDOR_08
+
+## Academic Use
+
+The file `docs/ACADEMIC_IMPLEMENTATION.md` contains the academic version of the project, suitable for report, thesis, or assignment submission.

@@ -1,0 +1,27 @@
+from pathlib import Path
+
+from ap_process_mining import generate_event_log, save_outputs
+
+
+def main() -> None:
+    root_dir = Path(__file__).resolve().parents[1]
+    output_dir = root_dir / "outputs"
+    event_log = generate_event_log(1200, seed=42)
+    summary = save_outputs(event_log, output_dir)
+
+    print("[AP PROCESS MINING] Loading synthetic accounts payable event log...")
+    print(f"[AP PROCESS MINING] Total invoices analyzed: {summary['total_invoices']}")
+    print(f"[AP PROCESS MINING] Duplicate payment candidates: {summary['duplicate_payment_candidates']}")
+    print(f"[AP PROCESS MINING] Rogue / unauthorized payments: {summary['rogue_payments']}")
+    print(f"[AP PROCESS MINING] Invoices with skipped approval: {summary['invoices_with_skipped_approval']}")
+    print(f"[AP PROCESS MINING] Looping invoice cases: {summary['looped_invoices']}")
+    print(f"[AP PROCESS MINING] Average activity lag (hours): {summary['avg_activity_lag_hours']}")
+    print(f"[AP PROCESS MINING] Highest-risk vendor cluster: {summary['top_risky_vendor']}")
+    print("[AP PROCESS MINING] Files generated:")
+    print("  - data/ap_invoice_eventlog.csv")
+    print("  - outputs/duplicate_payment_summary.json")
+    print("  - outputs/ap_process_report.md")
+
+
+if __name__ == "__main__":
+    main()
